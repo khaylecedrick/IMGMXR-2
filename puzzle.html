@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Picture Puzzle</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="/css/tailwind.css" rel="stylesheet">
+    <!-- <link href="css/image-puzzle.css" rel="stylesheet" /> -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/image-puzzle.js"></script>
+</head>
+<body>
+    <div id="collage" class="flex flex-col items-center justify-center h-screen bg-cover" style="background-image: url(img/bg.jpg);">
+        <!-- <h2 class="w-full text-xl border-b-2 semi-bold lg:text-3xl">Picture Puzzle</h2><hr /> -->
+        <div id="playPanel" class="h-auto p-10 ">
+            <!-- <h3 id="imgTitle"></h3> <hr /> -->
+            <div class="flex flex-col lg:flex-row items-center justify-center w-auto p-5 bg-[#c2defc]">
+                <ul id="sortable" class="grid grid-cols-3 list-none">
+                    <li id="sortable" class="cursor-pointer"></li>
+                </ul>
+
+                <div id="actualImageBox" class="ml-10 mr-10">
+                    <div class="flex flex-row justify-between">
+                        <div id="stepBox">
+                        Count:<div class="stepCount">0</div>
+                        </div>
+                        <div id="timeBox">
+                            Time: <hr> <span id="timerPanel"></span> seconds
+                        </div>
+                    </div>
+                    
+                    <img id="actualImage" class="w-full h-full"/>
+                    <div>See the picture and solve the puzzle.</div>
+                    <!-- <p id="levelPanel">
+                        <input type="radio" name="level" id="easy" checked="checked" value="3" /> <label for="easy">Easy</label>
+                        <input type="radio" name="level" id="medium" value="4" /> <label for="medium">Medium</label>
+                        <input type="radio" name="level" id="hard" value="5" /> <label for="hard">Hard</label>
+						<input type="radio" name="level" id="veryhard" value="6" /> <label for="veryhard">Very Hard</label>
+                    </p> -->
+                    <div class="flex justify-center gap-6 py-4">
+                        <button id="btnRule"
+                            class="px-3 py-2 font-semibold bg-white border-2 rounded-md">Rules</button>
+                        <button id="newPhoto"
+                            class="px-4 py-2 font-semibold bg-white border-2 rounded-md">Next Picture</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameOver" class="bg-[#fc9e9e] pt-5 pr-10 pb-20 pl-10 hidden">
+            <h2 class="text-center">
+            Congratulations!! <br /> You got the picture ready.
+            </h2><br />
+            Time: <span class="stepCount">0</span> gear.
+            <br />
+            Time spent: <span class="timeCount">0</span> seconds<br />
+
+            <div class="pt-2 text-center ">
+                <button type="button" class="text-lg underline text-bold" onclick="window.location.reload(true);">Play more</button>                
+            </div>
+
+        </div>
+
+        <script>
+            var images = [
+                { src: 'img/game_a.png', title: 'Go Live'},
+                {src: 'img/game_b.png', title: 'AMI Group'},
+                { src: 'img/game_c.png', title: 'Dynamic'},
+                { src: 'img/game_d.png', title: 'Origami'},
+                { src: 'img/game_e.png', title: 'All Brands'},
+            ];
+
+            $(function () {
+                // var gridSize = $('#levelPanel :radio:checked').val();
+                imagePuzzle.startGame(images, 3);
+                $('#newPhoto').click(function () {
+                    // var gridSize = $('#levelPanel :radio:checked').val();
+                    imagePuzzle.startGame(images, 3);
+                });
+
+                // $('#levelPanel :radio').change(function (e) {
+                //     var gridSize = $(this).val();
+                //     imagePuzzle.startGame(images, 3);
+                // });
+            });
+            function rules() {
+                alert('Rearrange the pieces so that you get a sample image. \nThe steps taken are counted');
+            }
+        </script>
+    </div>
+</body>
+</html>
